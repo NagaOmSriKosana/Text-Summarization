@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Summarization</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="column left-column">
+            <div class="content">
+                <h1>Text Summarization</h1>
+                <form method="POST">
+                    <div class="form-group">
+                        <label for="user_text">Enter your text:</label>
+                        <textarea class="form-control" id="user_text" name="user_text" rows="6" placeholder="Enter your text here" required>{{ request.form['user_text'] }}</textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Generate Summary</button>
+                </form>
+                
+            </div>
+        </div>
+        <div class="column right-column">
+            <h2>Summary:</h2>
+            <div class="summary" id="summary">
+                {% if generated_summary %}
+                    {{ generated_summary }}
+                {% endif %}
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>
